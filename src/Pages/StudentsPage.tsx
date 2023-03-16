@@ -19,6 +19,13 @@ const StudentsPage = () => {
 
                 <StudentElement
 
+                    fio={'Mitrofanova'}
+                    description={''}
+                    imageSrc={'https://sky.pro/media/wp-content/uploads/2022/03/glavnaya-9-1.png'}
+                    navigateTo={'/Amit'}
+                />
+
+<StudentElement
                     fio={'Охотников Леонид Сергеевич'}
                     description={'Middle fullstack developer'}
                     imageSrc={'https://memes.ucoz.com/_nw/83/36745700.jpg'}

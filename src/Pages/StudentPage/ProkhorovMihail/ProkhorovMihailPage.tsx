@@ -3,12 +3,12 @@ import Header from "../../../Components/Header/Header";
 import ContentBlock from "../../../Components/ContentBlock/ContentBlock";
 import AsideMenu from "./AsideMenu/AsideMenu";
 import {Outlet} from "react-router-dom";
-import "./KryuchkovNickPage.scss";
+import "./prokhorov.scss"
 
-const KryuchkovNickPage = () => {
+const ProkhorovMihailPage = () => {
     return (
         <div>
-            <Header studentFio={'Крючков Николай'}/>
+            <Header studentFio={'Прохоров Михаил'}/>
 
             <ContentBlock>
                 <div className={'self_content_block'}>
@@ -16,9 +16,10 @@ const KryuchkovNickPage = () => {
 
                     <Outlet/>
                 </div>
+
             </ContentBlock>
         </div>
     );
 };
 
-export default KryuchkovNickPage;
+export default ProkhorovMihailPage;

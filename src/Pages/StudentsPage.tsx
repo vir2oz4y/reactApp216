@@ -18,12 +18,21 @@ const StudentsPage = () => {
                 />
 
                 <StudentElement
+
                     fio={'Охотников Леонид Сергеевич'}
                     description={'Middle fullstack developer'}
                     imageSrc={'https://memes.ucoz.com/_nw/83/36745700.jpg'}
                     navigateTo={'/okhotnikov'}
-                />
+/>
 
+<StudentElement
+                    fio={'Повелитель тигровых ос'}
+                    description={'закаленный на коде'}
+                    imageSrc={'https://postila.ru/data/7e/bd/f2/ac/7ebdf2ac3f49aa924b990b19869a292db528397fed2d41d89356e6c92ec14425.jpg'}
+                    navigateTo={'/prokhorov'}
+
+                />
+                
             </Stack>
         </div>
 

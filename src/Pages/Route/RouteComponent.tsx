@@ -43,7 +43,7 @@ const RouteComponent = () => {
 
                     <Route path={'Amit'} element={<Amit/>} >
                         <Route path={'Test1'} element={<MtTest1Page/>} />
-                        <Route path={'Test2'} element={<MtTest1Page/>} />
+                        <Route path={'Test2'} element={<MtTest2Page/>} />
                     </Route>
 
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >

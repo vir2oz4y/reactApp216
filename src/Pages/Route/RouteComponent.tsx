@@ -9,7 +9,7 @@ import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 
 import TyrylginTAPage from "../StudentPage/TyrylginTA/TyrylginTAPage";
 import {default as TyrylginTest1Page} from "../StudentPage/TyrylginTA/Test1/Test1Page";
-import {default as TyrylginTest1Page} from '../StudentPage/TyrylginTA/Test2/Test2Page';
+import {default as TyrylginTest2Page} from '../StudentPage/TyrylginTA/Test2/Test2Page';
 
 import Amit from '../StudentPage/Amit/AmitPage';
 import {default as MtTest1Page} from "../StudentPage/Amit/Test1/Test1Page";
@@ -25,7 +25,6 @@ import {default as PrTest2Page} from "../StudentPage/ProkhorovMihail/Test2/Test2
 
 import Test1Page from "../StudentPage/KryuchkovNick/Test1/Test1Page";
 import Test2Page from "../StudentPage/KryuchkovNick/Test2/Test2Page";
-
 
 
 

@@ -7,6 +7,10 @@ import MainPage from "../MainPage";
 import StudentsPage from "../StudentsPage";
 import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
 
+import TyrylginTAPage from "../StudentPage/TyrylginTA/TyrylginTAPage";
+import {default as TyrylginTest1Page} from "../StudentPage/TyrylginTA/Test1/Test1Page";
+import {default as TyrylginTest1Page} from '../StudentPage/TyrylginTA/Test2/Test2Page';
+
 import Amit from '../StudentPage/Amit/AmitPage';
 import {default as MtTest1Page} from "../StudentPage/Amit/Test1/Test1Page";
 import {default as MtTest2Page} from "../StudentPage/Amit/Test2/Test2Page";
@@ -24,13 +28,19 @@ import Test2Page from "../StudentPage/KryuchkovNick/Test2/Test2Page";
 
 
 
+
 const RouteComponent = () => {
     return (
         <HashRouter>
             <Routes>
                 <Route path="/" element={<MainPage/>}>
+                
                     <Route index element={<StudentsPage/>} />
-
+                    
+                    <Route path={'Tyrylgin'} element={<TyrylginTAPage/>} >
+                        <Route path={'test1'} element={<TyrylginTest1Page/>}/>
+                        <Route path={'test2'} element={<TyrylginTest2Page/>}/>
+                    </Route>
 
                     <Route path={'Amit'} element={<Amit/>} >
                         <Route path={'Test1'} element={<MtTest1Page/>} />
@@ -42,7 +52,6 @@ const RouteComponent = () => {
                         <Route path={'test2'} element={<Test2Page/>} />
                     </Route>
 
-
                     <Route path={'okhotnikov'} element={<OkhotnikovLeonidPage/>} >
                         <Route path={'Test1'} element={<OhTest1Page/>}/>
                         <Route path={'Test2'} element={<OhTest2Page/>}/>
@@ -53,7 +62,6 @@ const RouteComponent = () => {
                         <Route path={'test2'} element={<PrTest2Page/>}/>
                     </Route>
 
-                   
                 </Route>
             </Routes>
         </HashRouter>

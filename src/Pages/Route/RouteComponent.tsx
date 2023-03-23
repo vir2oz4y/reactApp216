@@ -20,8 +20,15 @@ import {default as OhTest1Page} from "../StudentPage/OkhotnikovLeonid/Test1/Test
 import {default as OhTest2Page} from "../StudentPage/OkhotnikovLeonid/Test2/Test2Page";
 
 import ProkhorovMihailPage from "../StudentPage/ProkhorovMihail/ProkhorovMihailPage";
-import {default as PrTest1Page} from "../StudentPage/ProkhorovMihail/Test1/Test1Page";
-import {default as PrTest2Page} from "../StudentPage/ProkhorovMihail/Test2/Test2Page";
+import { default as PrCategoryPage } from "../StudentPage/ProkhorovMihail/Category/Category";
+import { default as PrClientPage } from "../StudentPage/ProkhorovMihail/Client/Client";
+import { default as PrManufacturerPage } from "../StudentPage/ProkhorovMihail/Manufacturer/Manufacturer";
+import { default as PrOrderPage } from "../StudentPage/ProkhorovMihail/Order/Order";
+import { default as PrProductPage } from "../StudentPage/ProkhorovMihail/Product/Product";
+import { default as PrPurchasePage } from "../StudentPage/ProkhorovMihail/Purchase/Purchase";
+import { default as PrUserPage } from "../StudentPage/ProkhorovMihail/User/User";
+
+
 
 import Test1Page from "../StudentPage/KryuchkovNick/Test1/Test1Page";
 import Test2Page from "../StudentPage/KryuchkovNick/Test2/Test2Page";
@@ -57,8 +64,12 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'Prokhorov'} element={<ProkhorovMihailPage/>}>
-                        <Route path={'test1'} element={<PrTest1Page/>}/>
-                        <Route path={'test2'} element={<PrTest2Page/>}/>
+                        <Route path={'category'} element={<PrCategoryPage/>}/>
+                        <Route path={'client'} element={<PrClientPage />} />
+                        <Route path={'manufacturer'} element={<PrManufacturerPage />} />
+                        <Route path={'product'} element={<PrProductPage />} />
+                        <Route path={'purchase'} element={<PrPurchasePage />} />
+                        <Route path={'user'} element={<PrUserPage />} />
                     </Route>
 
                 </Route>

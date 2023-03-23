@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Test2Page = () => {
+const Product = () => {
     return (
         <div>
-            2
+            1
         </div>
     );
 };
 
-export default Test2Page;
+export default Product;

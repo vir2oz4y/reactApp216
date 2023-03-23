@@ -12,8 +12,14 @@ import {default as TyrylginTest1Page} from "../StudentPage/TyrylginTA/Test1/Test
 import {default as TyrylginTest2Page} from '../StudentPage/TyrylginTA/Test2/Test2Page';
 
 import Amit from '../StudentPage/Amit/AmitPage';
-import {default as MtTest1Page} from "../StudentPage/Amit/Test1/Test1Page";
-import {default as MtTest2Page} from "../StudentPage/Amit/Test2/Test2Page";
+/*import {default as MtTest1Page} from "../StudentPage/Amit/Test1/Test1Page";
+import { default as MtTest2Page } from "../StudentPage/Amit/Test2/Test2Page";*/
+import { default as MtUser } from "../StudentPage/Amit/User/User";
+import { default as MtProduct } from "../StudentPage/Amit/Product/Product";
+import { default as MtManufacturer } from "../StudentPage/Amit/Manufacturer/Manufacturer";
+import { default as MtClient } from "../StudentPage/Amit/Client/Client";
+import { default as MtCategory } from "../StudentPage/Amit/Category/Category";
+
 
 import OkhotnikovLeonidPage from "../StudentPage/OkhotnikovLeonid/OkhotnikovLeonid";
 import {default as OhTest1Page} from "../StudentPage/OkhotnikovLeonid/Test1/Test1Page";
@@ -42,8 +48,11 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'Amit'} element={<Amit/>} >
-                        <Route path={'Test1'} element={<MtTest1Page/>} />
-                        <Route path={'Test2'} element={<MtTest2Page/>} />
+                       {/* <Route path={'Test1'} element={<MtTest1Page/>} />
+                        <Route path={'Test2'} element={<MtTest2Page/>} />*/}
+                        <Route path={'Category'} element={<MtCategory />} />
+                        <Route path={'User'} element={<MtUser />} />
+                        <Route path={'Client'} element={<MtClient />} />
                     </Route>
 
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >

@@ -33,7 +33,7 @@ const StudentsPage = () => {
 
                 <StudentElement
                     fio={'Охотников Леонид Сергеевич'}
-                    description={'Middle fullstack developer'}
+                    description={'Slave'}
                     imageSrc={'https://memes.ucoz.com/_nw/83/36745700.jpg'}
                     navigateTo={'/okhotnikov'}
                 />

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Test1Page = () => {
+const PurchasePage = () => {
     return (
         <div>
-            654651
+            purchase
         </div>
     );
 };
 
-export default Test1Page;
+export default PurchasePage;

@@ -26,7 +26,7 @@ const StudentsPage = () => {
 
                 <StudentElement
                     fio={'Mitrofanova'}
-                    description={'cutie girl'}
+                    description={''}
                     imageSrc={'https://sky.pro/media/wp-content/uploads/2022/03/glavnaya-9-1.png'}
                     navigateTo={'/Amit'}
                 />

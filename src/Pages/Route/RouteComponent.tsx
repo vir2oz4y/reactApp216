@@ -16,8 +16,11 @@ import {default as MtTest1Page} from "../StudentPage/Amit/Test1/Test1Page";
 import {default as MtTest2Page} from "../StudentPage/Amit/Test2/Test2Page";
 
 import OkhotnikovLeonidPage from "../StudentPage/OkhotnikovLeonid/OkhotnikovLeonid";
-import {default as OhTest1Page} from "../StudentPage/OkhotnikovLeonid/Test1/Test1Page";
-import {default as OhTest2Page} from "../StudentPage/OkhotnikovLeonid/Test2/Test2Page";
+import {default as OhTest1Page} from "../StudentPage/OkhotnikovLeonid/Category/CategoryPage";
+import {default as OhTest2Page} from "../StudentPage/OkhotnikovLeonid/Client/ClientPage";
+import {default as OhTest3Page} from "../StudentPage/OkhotnikovLeonid/Manufacturer/ManufacturerPage";
+import {default as OhTest4Page} from "../StudentPage/OkhotnikovLeonid/Product/ProductPage";
+import {default as OhTest5Page} from "../StudentPage/OkhotnikovLeonid/Purchase/PurchasePage";
 
 import ProkhorovMihailPage from "../StudentPage/ProkhorovMihail/ProkhorovMihailPage";
 import {default as PrTest1Page} from "../StudentPage/ProkhorovMihail/Test1/Test1Page";
@@ -47,8 +50,8 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'Amit'} element={<Amit/>} >
-                        <Route path={'Test1'} element={<MtTest1Page/>} />
-                        <Route path={'Test2'} element={<MtTest2Page/>} />
+                        <Route path={'Category'} element={<MtTest1Page/>} />
+                        <Route path={'Client'} element={<MtTest2Page/>} />
                     </Route>
 
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
@@ -61,8 +64,11 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'okhotnikov'} element={<OkhotnikovLeonidPage/>} >
-                        <Route path={'Test1'} element={<OhTest1Page/>}/>
-                        <Route path={'Test2'} element={<OhTest2Page/>}/>
+                        <Route path={'Category'} element={<OhTest1Page/>}/>
+                        <Route path={'Client'} element={<OhTest2Page/>}/>
+                        <Route path={'Manufacturer'} element={<OhTest3Page/>}/>
+                        <Route path={'Product'} element={<OhTest4Page/>}/>
+                        <Route path={'Purchase'} element={<OhTest5Page/>}/>
                     </Route>
 
                     <Route path={'Prokhorov'} element={<ProkhorovMihailPage/>}>

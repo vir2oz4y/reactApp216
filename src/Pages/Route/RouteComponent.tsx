@@ -78,8 +78,8 @@ const RouteComponent = () => {
                         <Route path={'Category'} element={<MtCategory />} />
                         <Route path={'User'} element={<MtUser />} />
                         <Route path={'Client'} element={<MtClient />} />
-                        <Route path={'Category'} element={<MtTest1Page/>} />
-                        <Route path={'Client'} element={<MtTest2Page/>} />
+                        <Route path={'Product'} element={<MtProduct/>} />
+                        <Route path={'Order'} element={<PrOrderPage/>} />
                     </Route>
 
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >

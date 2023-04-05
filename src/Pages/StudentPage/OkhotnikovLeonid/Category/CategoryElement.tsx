@@ -6,7 +6,7 @@ type Props = {
     category:Category,
     onDeleteClick: () => void;
 }
-const CategoryElement = ({category}:Props) => {
+const CategoryElement = ({category, onDeleteClick}:Props) => {
     return (
         <div>
             <div>{category.name}</div>

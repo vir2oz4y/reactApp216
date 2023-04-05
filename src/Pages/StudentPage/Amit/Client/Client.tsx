@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Test1Page = () => {
+const Client = () => {
     return (
         <div>
             1
@@ -8,4 +8,4 @@ const Test1Page = () => {
     );
 };
 
-export default Test1Page;
+export default Client;

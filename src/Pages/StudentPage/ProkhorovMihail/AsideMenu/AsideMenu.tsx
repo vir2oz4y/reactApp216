@@ -13,13 +13,44 @@ const AsideMenu = () => {
         <List>
             <ListItem disablePadding>
                 <ListItemButton
-                onClick={()=>navigate('test1')}>
-                    <ListItemText primary="Test1" />
+                    onClick={() => navigate('category')}>
+                    <ListItemText primary="category" />
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-                <ListItemButton onClick={()=>navigate('test2')}>
-                    <ListItemText primary="Test2" />
+                <ListItemButton
+                    onClick={() => navigate('client')}>
+                    <ListItemText primary="client" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton
+                    onClick={() => navigate('manufacturer')}>
+                    <ListItemText primary="manufacturer" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton
+                onClick={()=>navigate('order')}>
+                    <ListItemText primary="order" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton
+                    onClick={() => navigate('product')}>
+                    <ListItemText primary="product" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton
+                    onClick={() => navigate('purchase')}>
+                    <ListItemText primary="purchase" />
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+                <ListItemButton
+                    onClick={() => navigate('user')}>
+                    <ListItemText primary="user" />
                 </ListItemButton>
             </ListItem>
         </List>

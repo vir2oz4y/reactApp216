@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Test1Page = () => {
+const ProductPage = () => {
     return (
         <div>
-            Test 1
+            Product_Page
         </div>
     );
 };
 
-export default Test1Page;
+export default ProductPage;

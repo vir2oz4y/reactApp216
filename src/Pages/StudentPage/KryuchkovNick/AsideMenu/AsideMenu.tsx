@@ -10,17 +10,41 @@ const AsideMenu = () => {
         <List>
             <ListItem disablePadding>
                 <ListItemButton
-                    onClick={()=>navigate('test1')}
+                    onClick={()=>navigate('category')}
                 >
-                    <ListItemText primary="Test1" />
+                    <ListItemText primary="Category" />
                 </ListItemButton>
             </ListItem>
 
             <ListItem disablePadding>
                 <ListItemButton
-                    onClick={()=>navigate('test2')}
+                    onClick={()=>navigate('client')}
                 >
-                    <ListItemText primary="Test2" />
+                    <ListItemText primary="Client" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton
+                    onClick={() => navigate('manufacturer')}
+                >
+                    <ListItemText primary="Manufacturer" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton
+                    onClick={() => navigate('product')}
+                >
+                    <ListItemText primary="Product" />
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+                <ListItemButton
+                    onClick={() => navigate('order')}
+                >
+                    <ListItemText primary="Order" />
                 </ListItemButton>
             </ListItem>
         </List>

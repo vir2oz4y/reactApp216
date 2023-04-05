@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import MainPage from "../MainPage";
 import StudentsPage from "../StudentsPage";
-import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
+
 
 import TyrylginTAPage from "../StudentPage/TyrylginTA/TyrylginTAPage";
 import {default as TyrylginTest1Page} from "../StudentPage/TyrylginTA/Test1/Test1Page";
@@ -23,8 +23,13 @@ import ProkhorovMihailPage from "../StudentPage/ProkhorovMihail/ProkhorovMihailP
 import {default as PrTest1Page} from "../StudentPage/ProkhorovMihail/Test1/Test1Page";
 import {default as PrTest2Page} from "../StudentPage/ProkhorovMihail/Test2/Test2Page";
 
-import Test1Page from "../StudentPage/KryuchkovNick/Test1/Test1Page";
-import Test2Page from "../StudentPage/KryuchkovNick/Test2/Test2Page";
+import KryuchkovNickPage from "../StudentPage/KryuchkovNick/KryuchkovNickPage";
+import { default as KrCategoryPage } from "../StudentPage/KryuchkovNick/Category/CategoryPage";
+import { default as KrClientPage } from "../StudentPage/KryuchkovNick/Client/ClientPage";
+import { default as KrManufacturerPage } from "../StudentPage/KryuchkovNick/Manufacturer/ManufacturerPage";
+import { default as KrProductPage } from "../StudentPage/KryuchkovNick/Product/ProductPage";
+import { default as KrOrderPage } from "../StudentPage/KryuchkovNick/Order/OrderPage";
+
 
 
 
@@ -47,8 +52,12 @@ const RouteComponent = () => {
                     </Route>
 
                     <Route path={'teacher'} element={<KryuchkovNickPage/>} >
-                        <Route path={'test1'} element={<Test1Page/>} />
-                        <Route path={'test2'} element={<Test2Page/>} />
+                        <Route path={'category'} element={<KrCategoryPage/>} />
+                        <Route path={'client'} element={<KrClientPage/>} />
+                        <Route path={'manufacturer'} element={<KrManufacturerPage/>} />
+                        <Route path={'product'} element={<KrProductPage/>} />
+                        <Route path={'order'} element={<KrOrderPage/>} />
+
                     </Route>
 
                     <Route path={'okhotnikov'} element={<OkhotnikovLeonidPage/>} >

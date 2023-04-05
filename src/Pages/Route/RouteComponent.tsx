@@ -8,8 +8,13 @@ import StudentsPage from "../StudentsPage";
 
 
 import TyrylginTAPage from "../StudentPage/TyrylginTA/TyrylginTAPage";
-import {default as TyrylginTest1Page} from "../StudentPage/TyrylginTA/Test1/Test1Page";
-import {default as TyrylginTest2Page} from '../StudentPage/TyrylginTA/Test2/Test2Page';
+import { default as TyrylginCategoryPage } from '../StudentPage/TyrylginTA/Category/CategoryPage';
+import { default as TyrylginClientPage } from '../StudentPage/TyrylginTA/Client/ClientPage';
+import { default as TyrylginManufacturerPage } from '../StudentPage/TyrylginTA/Manufacturer/ManufacturerPage';
+import { default as TyrylginOrderPage } from '../StudentPage/TyrylginTA/Order/OrderPage';
+import { default as TyrylginProductPage } from '../StudentPage/TyrylginTA/Product/ProductPage';
+import { default as TyrylginPurchasePage } from '../StudentPage/TyrylginTA/Purchase/PurchasePage';
+import { default as TyrylginUserPage } from '../StudentPage/TyrylginTA/User/UserPage';
 
 import Amit from '../StudentPage/Amit/AmitPage';
 /*import {default as MtTest1Page} from "../StudentPage/Amit/Test1/Test1Page";
@@ -58,8 +63,13 @@ const RouteComponent = () => {
                     <Route index element={<StudentsPage/>} />
                     
                     <Route path={'Tyrylgin'} element={<TyrylginTAPage/>} >
-                        <Route path={'test1'} element={<TyrylginTest1Page/>}/>
-                        <Route path={'test2'} element={<TyrylginTest2Page/>}/>
+                        <Route path={'category'} element={<TyrylginCategoryPage/>}/>
+                        <Route path={'client'} element={<TyrylginClientPage />} />
+                        <Route path={'manufacturer'} element={<TyrylginManufacturerPage />} />
+                        <Route path={'product'} element={<TyrylginProductPage />} />
+                        <Route path={'order'} element={<TyrylginOrderPage />} />
+                        <Route path={'user'} element={<TyrylginUserPage />} />
+                        <Route path={'purchase'} element={<TyrylginPurchasePage />} />
                     </Route>
 
                     <Route path={'Amit'} element={<Amit/>} >

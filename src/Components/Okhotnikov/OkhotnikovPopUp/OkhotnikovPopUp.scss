@@ -1,0 +1,23 @@
+.okhotnikov_popup{
+
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  &__content{
+    text-align: right;
+    width: 400px;
+    background-color: gray;
+    border: 2px solid #000;
+    -webkit-box-shadow: 100px 100px 33px 100px rgba(34, 60, 80, 0.28);
+    -moz-box-shadow: 100px 100px 33px 100px rgba(34, 60, 80, 0.28);
+    box-shadow: 100px 100px 33px 100px rgba(34, 60, 80, 0.28);
+    border-radius: 6px;
+
+  }
+  &__header{
+    justify-content: space-between;
+    display: flex;
+
+  }
+}

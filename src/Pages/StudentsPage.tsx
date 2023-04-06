@@ -44,6 +44,13 @@ const StudentsPage = () => {
                     imageSrc={'https://postila.ru/data/7e/bd/f2/ac/7ebdf2ac3f49aa924b990b19869a292db528397fed2d41d89356e6c92ec14425.jpg'}
                     navigateTo={'/prokhorov'}
                 />
+
+                <StudentElement
+                    fio={'Солопун Алина Сергеевна'}
+                    description={'Невдуплёныш'}
+                    imageSrc={'https://kartinkof.club/uploads/posts/2022-03/1648333758_36-kartinkof-club-p-krasivoe-kot-mem-37.jpg'}
+                    navigateTo={'/Solopun'}
+                />
                 
             </Stack>
         </div>

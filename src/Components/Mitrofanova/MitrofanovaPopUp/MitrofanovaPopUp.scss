@@ -1,0 +1,25 @@
+.mitrofanova_popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction:column;
+
+    &_content {
+        background-color: white;
+        border-block-color: black;
+        border: 2px solid #000;
+        box-shadow: 5px;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;        
+    }
+
+    &_content_in {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 20px;
+        padding: 8vh;
+    }
+}
+/*.mitrofanova_popup_content{}*/

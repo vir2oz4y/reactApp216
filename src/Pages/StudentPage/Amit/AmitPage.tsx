@@ -8,7 +8,7 @@ import "./PageStyle.scss";
 const KryuchkovNickPage = () => {
     return (
         <div>
-            <Header studentFio={'Amit'}/>
+            <Header studentFio={'Alexandra Mitrofanova'}/>
 
             <ContentBlock>
                 <div className={'self_content_block'}>

@@ -26,8 +26,8 @@ const StudentsPage = () => {
 
                 <StudentElement
                     fio={'Mitrofanova'}
-                    description={''}
-                    imageSrc={'https://sky.pro/media/wp-content/uploads/2022/03/glavnaya-9-1.png'}
+                    description={'Am I testing my code? Or is it testing me...'}
+                    imageSrc={'https://i.pinimg.com/originals/13/d9/e6/13d9e6c9baeaf2ba8c11ec1683696b15.jpg'}
                     navigateTo={'/Amit'}
                 />
 

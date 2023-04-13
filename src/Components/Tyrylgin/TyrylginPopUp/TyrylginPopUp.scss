@@ -7,20 +7,18 @@
     font-size: 20px;
 
     &__content {
-        display: flex;
-        width: 1000px;
-        height: 500px;
-        background-color: white;
-        border-radius: 3px;
-        &__header{
-            display:flex
-        }
-        &__title {
-            padding: 5px 15 0 0;
-        }
-
-        &__closebutton {
-            padding: 5px 15 0 0;
+        background-color: #fff;
+        padding:1em;
+        border-radius: 1em;
+        min-width: 400px;
+        &__title{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: solid 1px #ccc;
+            padding-bottom: 1em;
+            margin-bottom: 1em;
         }
     }
 }
+

@@ -5,9 +5,18 @@
     height:100vh;
 
     &__content{
-          
-        &__header{
+        background-color: #fff;
+        padding: 1em;
+        border-radius: 1em;
+        min-width: 400px;
 
+        &__title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: solid 1px #ccc;
+            padding-bottom: 1em;
+            margin-bottom: 1em;
         }
     }
 }

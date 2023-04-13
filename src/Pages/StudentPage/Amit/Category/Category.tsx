@@ -1,12 +1,14 @@
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 import CategoryElement from './CategoryElement';
-import { Category } from './models';
+import {Category} from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button, IconButton } from '@mui/material';
+import {Button, IconButton} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import MitrofanovaPopUp from '../../../../Components/Mitrofanova/MitrofanovaPopUp/MitrofanovaPopUp';
+import CreateCategoryPopUp from "./Popups/CreateCategoryPopUp";
+import EditCategoryPopUp from "./Popups/editCategoryPopup";
 
 const CategoryPage = () => {
     const [categoryList, setcategoryList] = useState<Category[]>([
@@ -23,11 +25,15 @@ const CategoryPage = () => {
     const onDeleteClick = (id: number) => {
         setcategoryList(prev => [...prev.filter(el => el.id !== id)])
     }
+    const onEditClick = (id: number) => {
+        const curCategory = categoryList.find(el => el.id === id);
+        setEditCategory(curCategory);
+    }
 
     const columns: GridColDef[] = [
         {
             field: 'id',
-            headerName:'ID'
+            headerName: 'ID'
         },
         {
             field: 'name',
@@ -38,24 +44,52 @@ const CategoryPage = () => {
             headerName: '',
             renderCell: (e: any) => {
                 return <div>
-                    <IconButton aria-label="edit">
-                    <EditIcon />
+                    <IconButton
+                        onClick={() => onEditClick(e.row.id)}
+                        aria-label="edit">
+                        <EditIcon/>
                     </IconButton>
 
                     <IconButton
-                        onClick={() => onDeleteClick(e.row.id) }
+                        onClick={() => onDeleteClick(e.row.id)}
                         aria-label="delete">
-                        <DeleteIcon />
+                        <DeleteIcon/>
                     </IconButton>
                 </div>
             }
         }
     ]
 
-   
+    const [createPopupOpened, setCreatePopupOpened] = useState(false);
+    const [editCategory, setEditCategory] = useState<Category | null>(null);
+
+    const onCreate = (category: Category) => {
+        setcategoryList(prev => [...prev, category])
+    }
+    const onEdit = (category: Category) => {
+        setcategoryList(prev => {
+            const curCategory = prev.find(el => el.id === category.id);
+            curCategory.name = category.name;
+
+            return [...prev]
+        })
+
+    }
+
     return (
-        <div style={{ width: '100%' }}>
-            <MitrofanovaPopUp></MitrofanovaPopUp>
+        <div style={{width: '100%'}}>
+            {createPopupOpened && <CreateCategoryPopUp
+                onCreate={(category: Category) => onCreate(category)}
+                open={createPopupOpened}
+                onClose={() => setCreatePopupOpened(false)}
+            ></CreateCategoryPopUp>}
+
+            {editCategory != null && <EditCategoryPopUp
+                open={editCategory != null}
+                onClose={() => setEditCategory(null)}
+                category={editCategory}
+                onEdit={(category: Category) => onEdit(category)}
+            />}
 
             <div style={{
                 display: 'flex',
@@ -67,26 +101,27 @@ const CategoryPage = () => {
                     <Button
                         color={'primary'}
                         variant={'contained'}
+                        onClick={() => setCreatePopupOpened(true)}
                     >
                         Add Category
                     </Button>
                 </div>
             </div>
-        <div style={{width:'100%', height:'80vh'} }>
-            <DataGrid
-                rows={categoryList}
-                columns={columns}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 5,
+            <div style={{width: '100%', height: '80vh'}}>
+                <DataGrid
+                    rows={categoryList}
+                    columns={columns}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 5,
+                            },
                         },
-                    },
-                }}
-                pageSizeOptions={[5]}
-                //checkboxSelection
-                disableRowSelectionOnClick
-            />
+                    }}
+                    pageSizeOptions={[5]}
+                    //checkboxSelection
+                    disableRowSelectionOnClick
+                />
             </div>
         </div>
     );

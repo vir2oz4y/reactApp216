@@ -6,6 +6,7 @@ import { Category } from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProkhorovPopup from '../../../../Components/Prokhorov/ProkhorovPopup/ProkhorovPopup';
+import CreateCategoryPopup from './Popups/CreateCategoryPopup';
 const CategoryPage = () => {
 
     const [categoryList, setcategoryList] = useState<Category[]>([
@@ -51,17 +52,38 @@ const CategoryPage = () => {
         ])
     }
 
+
+
+    const [createPopupOpened, setCreatePopupOpened] = useState(false);
+    const[editCategory,setEditCategory] = useState<Category|null>(null)
+
+    const onEdit=(category:Category)=>{
+        setcategoryList(prev=>[...prev,category])
+        const curCategory = prev.find(el=>el.id == category.id)!;
+        curCategory.name = category.name;
+        return[...prev]
+    }
+
     return (
         <div style={{ width: '100%' }}>
 
-            <ProkhorovPopup></ProkhorovPopup>
+            {createPopupOpened && <CreateCategoryPopup
+                onCreate={(category)=>onCreate(category)}
+                open={createPopupOpened}
+                onClose={()=>setCreatePopupOpened(false)}
+            />}
+            {editCategory !== null && <EditCategoryPopup
+                open{editCategory !== null}
+                onClose={()=>setEditCategory(null)}
 
+                />}
             <div style={{ display: 'flex', justifyContent: 'space-between',alignItems: 'center'}}>
                 <h1>Category</h1>
                 <div>
                     <Button
                         color={'primary'}
                         variant={'contained'}
+                        onClick={()=>setCreatePopupOpened(true)}
                     >
                         Add Category
                         </Button>

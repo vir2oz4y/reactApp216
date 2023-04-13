@@ -6,6 +6,8 @@ import {Button, IconButton} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import OkhotnikovPopUp from "../../../../Components/Okhotnikov/OkhotnikovPopUp/OkhotnikovPopUp";
+import Createcategorypopup from "./Popups/Createcategorypopup";
+import EditCategoryPopup from "./Popups/EditCategoryPopup";
 
 const CategoryPage = () => {
     const [categoryList, setcategoryList] = useState<Category[]>([
@@ -22,6 +24,10 @@ const CategoryPage = () => {
         setcategoryList(prev => [...prev.filter(el => el.id !== id)])
 
     }
+    const onEditClick = (id:number) =>{
+        const curCategory = categoryList.find(el=>el.id===id)
+        setEditCategory(curCategory)
+    }
     const columns: GridColDef[]=[
         {
             field:'id',
@@ -36,7 +42,8 @@ const CategoryPage = () => {
             headerName: '',
             renderCell: (e: any) =>{
                 return <div>
-                    <IconButton aria-label="delete">
+                    <IconButton aria-label="edit"
+                    onClick={()=>onEditClick(e.row.id)}>
                         <EditIcon />
                     </IconButton>
                     <IconButton
@@ -48,11 +55,32 @@ const CategoryPage = () => {
             }
         }
     ];
+    const [createPopupOpened, setCreatePopupOpened] = useState(false);
+    const [editCategory, setEditCategory]=useState<Category|null>(null)
+    const onCreate = (category:Category) =>{
+        setcategoryList(prev=>[...prev,category])
+    }
+    const onEdit = (category:Category)=>{
+        setcategoryList(prev=>{
+            const curCategory = prev.find(el=>el.id===category.id)!;
+            curCategory.name = category.name;
+            return[...prev]
+        })
+    }
     return (
 
         <div style={{width:'100%'}}>
-            <OkhotnikovPopUp></OkhotnikovPopUp>
-
+            {createPopupOpened && <Createcategorypopup
+                onCreate={(category)=>onCreate(category)}
+                open={createPopupOpened}
+                onClose={()=>setCreatePopupOpened(false)}
+                />}
+            {editCategory!==null&&<EditCategoryPopup
+            open={editCategory!==null}
+            onClose={()=>setEditCategory(null)}
+            category={editCategory}
+            onEdit={(category)=>onEdit(category)}
+            />}
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -63,6 +91,7 @@ const CategoryPage = () => {
                 <div>
                     <Button color={'primary'}
                             variant={'contained'}
+                            onClick={()=> setCreatePopupOpened(true)}
                     >
                         Add Category
                     </Button>

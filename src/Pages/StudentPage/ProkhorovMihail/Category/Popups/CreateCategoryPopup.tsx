@@ -4,50 +4,47 @@ import ProkhorovPopup, {IPopup} from "../../../../../Components/Prokhorov/Prokho
 import {Category} from '../models';
 
 type Props = IPopup & {
-    onEdit: (category: Category) => void;
-    category:Category
+    onCreate: (category: Category) => void;
 }
-const EditCategoryPopup = ({onClose, open, onEdit}: Props) => {
+const CreateCategoryPopup = ({ onClose, open, onCreate }: Props) => {
 
-        const [categoryName, setCategoryName] = useState('')
+    const [categoryName, setCategoryName] = useState('')
 
-        const onCreateClick = () => {
-            onCreate({
-                    id: Math.random(),
-                    name: categoryName
-                }
-            )
-            onClose();
-        }
-
-
-        return (<ProkhorovPopup
-                open={open}
-                onClose={() => onClose()}
-                title={'редактирование категории'}
-            >
-                <div style={{display: 'flex', flexDirection: 'column', gap: '1em'}}>
-                    <TextField
-                        variant={'standard'}
-                        fullWidth={true}
-                        label={'название кактегории'}
-                        value={edit.Category.name}
-                        onChange={e =>
-                            setEditCategory({...prev=>({...prev,name:e.target.value})}
-                    />
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <Button
-                            color={'primary'}
-                            variant={'contained'}
-                            onClick={() => onCreateClick()}
-                        >
-                            создать
-                        </Button>
-                    </div>
-                </div>
-            </ProkhorovPopup>
-        );
+    const onCreateClick = () => {
+        onCreate({
+            id: Math.random(),
+            name: categoryName
+        })
+        onClose();
     }
-;
+    return (
+        <ProkhorovPopup
+            open={open}
+            onClose={() => onClose()}
+            title={'Создание категории'}
+        >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'qem' }}>
+                <TextField
+                    variant={'standard'}
+                    fullWidth={true}
+                    label={'Название категории'}
+                    value={categoryName}
+                    onChange={e => setCategoryName(e.target.value)}
+                />
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button
+                        color={'primary'}
+                        variant={'contained'}
+                        onClick={() => onCreateClick()}
+                    >
+                        Создать
+                    </Button>
+                </div>
+            </div>
+        </ProkhorovPopup>
+    );
+};
 
-export default EditCategoryPopup;
+export default CreateCategoryPopup;
+
+

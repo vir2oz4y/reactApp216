@@ -32,7 +32,7 @@ const ProkhorovPopup = ({open, children, title, onClose}:Props) => {
                                 <div>{title}</div>
                             </div>
                             <IconButton
-                                onClick={()=>onEditClick(e}
+                                
                                 onClick={()=>onClose()}
                                 >
                                 <CloseIcon/>

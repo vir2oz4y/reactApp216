@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ProkhorovPopup from '../../../../Components/Prokhorov/ProkhorovPopup/ProkhorovPopup';
 import CreateCategoryPopup from './Popups/CreateCategoryPopup';
+import EditCategoryPopup from './Popups/EditCategoryPopup';
 const CategoryPage = () => {
 
     const [categoryList, setcategoryList] = useState<Category[]>([
@@ -19,6 +20,17 @@ const CategoryPage = () => {
             name: 'Category 2'
         }
     ])
+
+    const onDeleteClick = (id: number) => {
+        setcategoryList(prev => [
+            ...prev.filter(el => el.id !== id)
+        ])
+    }
+
+    const onEditClick = (id: number) => {
+        const curCategory = categoryList.find(el => el.id === id)!;
+        setEditCategory(curCategory)
+    }
 
     const columns: GridColDef[] = [
         {
@@ -46,37 +58,36 @@ const CategoryPage = () => {
         }
     ]
 
-    const onDeleteClick = (id: number) => {
-        setcategoryList(prev => [
-            ...prev.filter(el => el.id !== id)
-        ])
+    const [createPopupOpened, setCreatePopupOpened] = useState(false);
+    const [editCategory, setEditCategory] = useState<Category | null>(null)
+    const onCreate = (category: Category) => {
+        setcategoryList(prev => [...prev, category])
     }
 
+    const onEdit = (category: Category) => {
+        setcategoryList(prev => {
+            const curCategory = prev.find(el => el.id === category.id)!;
+            curCategory.name = category.name;
 
-
-    const [createPopupOpened, setCreatePopupOpened] = useState(false);
-    const[editCategory,setEditCategory] = useState<Category|null>(null)
-
-    const onEdit=(category:Category)=>{
-        setcategoryList(prev=>[...prev,category])
-        const curCategory = prev.find(el=>el.id == category.id)!;
-        curCategory.name = category.name;
-        return[...prev]
+            return [...prev]
+        })
     }
 
     return (
         <div style={{ width: '100%' }}>
 
+
             {createPopupOpened && <CreateCategoryPopup
-                onCreate={(category)=>onCreate(category)}
+                onCreate={(category) => onCreate(category)}
                 open={createPopupOpened}
-                onClose={()=>setCreatePopupOpened(false)}
+                onClose={() => setCreatePopupOpened(false)}
             />}
             {editCategory !== null && <EditCategoryPopup
-                open{editCategory !== null}
-                onClose={()=>setEditCategory(null)}
-
-                />}
+                open={editCategory !== null}
+                onClose={() => setEditCategory(null)}
+                category={editCategory}
+                onEdit={(category) => onEdit(category)}
+            />}
             <div style={{ display: 'flex', justifyContent: 'space-between',alignItems: 'center'}}>
                 <h1>Category</h1>
                 <div>

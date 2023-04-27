@@ -1,23 +1,23 @@
 import {Button, TextField} from '@mui/material';
 import React, {useState} from 'react';
 import KryuchkovPopup, {IPopup} from "../../../../../Components/Kryuchkov/KryuchkovPopup/KryuchkovPopup";
-import {Category} from "../models";
+import {Manufacturer} from "../models";
 import {kryuchkovAxios} from "../../KryuchkovNickPage";
 
 type Props = IPopup & {
-    onCreate: (category: Category) => void;
+    onCreate: (Manufacturer: Manufacturer) => void;
 }
 
-const CreateCategoryPopup = ({onClose, open, onCreate}: Props) => {
+const CreateManufacturerPopup = ({onClose, open, onCreate}: Props) => {
 
-    const [categoryName, setCategoryName] = useState('')
+    const [ManufacturerName, setManufacturerName] = useState('')
 
     const onCreateClick = () => {
         kryuchkovAxios
-            .post<{ item: Category }>(
-                'https://canstudy.ru/orderapi/category',
+            .post<{ item: Manufacturer }>(
+                'https://canstudy.ru/orderapi/Manufacturer',
                 {
-                    name: categoryName
+                    name: ManufacturerName
                 })
             .then(res => {
                 onCreate(res.data.item)
@@ -36,8 +36,8 @@ const CreateCategoryPopup = ({onClose, open, onCreate}: Props) => {
                     variant={'standard'}
                     fullWidth={true}
                     label={'Название категории'}
-                    value={categoryName}
-                    onChange={e => setCategoryName(e.target.value)}
+                    value={ManufacturerName}
+                    onChange={e => setManufacturerName(e.target.value)}
                 />
 
                 <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -55,4 +55,4 @@ const CreateCategoryPopup = ({onClose, open, onCreate}: Props) => {
     );
 };
 
-export default CreateCategoryPopup;
+export default CreateManufacturerPopup;

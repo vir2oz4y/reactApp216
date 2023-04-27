@@ -2,6 +2,7 @@ import {Button, TextField} from '@mui/material';
 import React, {useState} from 'react';
 import KryuchkovPopup, {IPopup} from "../../../../../Components/Kryuchkov/KryuchkovPopup/KryuchkovPopup";
 import {Category} from "../models";
+import {kryuchkovAxios} from "../../KryuchkovNickPage";
 
 type Props = IPopup & {
     onEdit: (category: Category) => void;
@@ -13,7 +14,16 @@ const EditCategoryPopup = ({onClose, open, onEdit, category}: Props) => {
     const [editCategory, setEditCategory] = useState(category)
 
     const onEditClick = () => {
-        onEdit(editCategory)
+        kryuchkovAxios.patch<{ item: Category }>(
+            'https://canstudy.ru/orderapi/category',
+            {
+                item: editCategory
+            })
+            .then((res) => {
+                onEdit(res.data.item)
+                onClose();
+            })
+
     }
 
     return (

@@ -1,35 +1,45 @@
 import {Button, IconButton} from '@mui/material';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Category} from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import KryuchkovPopup from '../../../../Components/Kryuchkov/KryuchkovPopup/KryuchkovPopup';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
+import {kryuchkovAxios} from "../KryuchkovNickPage";
 
 const CategoryPage = () => {
 
-    const [categoryList, setcategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: 'Category 1'
-        },
-        {
-            id: 1,
-            name: 'Category 2'
-        },
-    ])
+    const [categoryList, setcategoryList] = useState<Category[]>([])
+
+    const getCategories = () => {
+        kryuchkovAxios.get<{ items: Category[] }>(
+            'https://canstudy.ru/orderapi/category/list'
+        )
+            .then(res => {
+                setcategoryList(res.data.items);
+            })
+    }
+
+    useEffect(() => {
+        getCategories()
+    }, [])
 
 
     const onDeleteClick = (id: number) => {
-        setcategoryList(prev => [
-            ...prev.filter(el => el.id !== id)
-        ])
+        kryuchkovAxios.delete(
+            `https://canstudy.ru/orderapi/category/${id}`
+        )
+            .then(() => {
+                setcategoryList(prev => [
+                    ...prev.filter(el => el.id !== id)
+                ])
+            })
     }
-    
-    const onEditClick = (id:number) =>{
-        const curCategory = categoryList.find(el=>el.id === id)!;
+
+    const onEditClick = (id: number) => {
+        const curCategory = categoryList.find(el => el.id === id)!;
         setEditCategory(curCategory)
     }
 
@@ -51,7 +61,7 @@ const CategoryPage = () => {
             renderCell: (e: any) => {
                 return <div>
                     <IconButton
-                        onClick={()=> onEditClick(e.row.id)}
+                        onClick={() => onEditClick(e.row.id)}
                         aria-label="edit"
                     >
                         <EditIcon/>
@@ -70,16 +80,16 @@ const CategoryPage = () => {
 
     const [createPopupOpened, setCreatePopupOpened] = useState(false);
 
-    const [editCategory, setEditCategory] = useState<Category|null>(null)
+    const [editCategory, setEditCategory] = useState<Category | null>(null)
 
-    const onCreate = (category:Category) =>{
-        setcategoryList(prev=>[...prev, category])
+    const onCreate = (category: Category) => {
+        setcategoryList(prev => [...prev, category])
     }
 
-    const onEdit = (category:Category) =>{
-        setcategoryList(prev=>{
+    const onEdit = (category: Category) => {
+        setcategoryList(prev => {
 
-            const curCategory = prev.find(el=>el.id === category.id)!;
+            const curCategory = prev.find(el => el.id === category.id)!;
             curCategory.name = category.name;
 
             return [...prev]
@@ -90,16 +100,16 @@ const CategoryPage = () => {
         <div style={{width: '100%'}}>
 
             {createPopupOpened && <CreateCategoryPopup
-                onCreate={(category)=>onCreate(category)}
+                onCreate={(category) => onCreate(category)}
                 open={createPopupOpened}
                 onClose={() => setCreatePopupOpened(false)}
             />}
 
             {editCategory !== null && <EditCategoryPopup
                 open={editCategory !== null}
-                onClose={()=>setEditCategory(null)}
+                onClose={() => setEditCategory(null)}
                 category={editCategory}
-                onEdit={(category)=>onEdit(category)}
+                onEdit={(category) => onEdit(category)}
             />}
 
             <div style={{

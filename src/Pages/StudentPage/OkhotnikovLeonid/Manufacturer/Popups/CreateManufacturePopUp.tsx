@@ -1,51 +1,53 @@
 import React, {useState} from 'react';
 import OkhotnikovPopUp, {IPopup} from "../../../../../Components/Okhotnikov/OkhotnikovPopUp/OkhotnikovPopUp";
 import {Button, TextField} from "@mui/material";
-import {Category} from "../models";
 import {okhotnikovAxios} from "../../OkhotnikovLeonid";
+import {Manufacturer} from "../models";
 
 type Props = IPopup & {
-    onEdit: (category: Category) => void;
-    category:Category
+    onCreate: (Manufacturer: Manufacturer) => void;
+
 }
-const EditCategoryPopup = ({open, onClose, onEdit, category}: Props) => {
-    const [editCategory, setEditCategory] = useState(category)
-    const onEditClick = () => {
-        okhotnikovAxios.patch<{
-            item:Category }>
-        ('https://canstudy.ru/orderapi/category',{ item:editCategory
-            })
+const CreateManufacturepopup = ({open, onClose, onCreate}: Props) => {
+    const [ManufactureName, setManufactureName] = useState('')
+    const onCreateClick = () => {
+        okhotnikovAxios.post<{
+            item:Manufacturer }>
+        ('https://canstudy.ru/orderapi/Manufacture',{
+            name: ManufactureName
+        })
             .then(res=>{
-                onEdit(res.data.item)
+                onCreate(res.data.item)
                 onClose();
             })
+
     }
     return (
         <OkhotnikovPopUp
             open={open}
             onClose={() => onClose()}
-            title={'Редактирование категории'}
+            title={'Создание категории'}
         >
             <div style={{display: 'flex', flexDirection: 'column', gap: '1em'}}>
                 <TextField
                     variant={'standard'}
                     fullWidth={true}
                     label={'Название категории'}
-                    value={editCategory.name}
-                    onChange={e => setEditCategory(prev=>({...prev, name: e.target.value}))}
+                    value={ManufactureName}
+                    onChange={e => setManufactureName(e.target.value)}
                 />
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <Button
                         color={'primary'}
                         variant={'contained'}
-                        onClick={() => onEditClick()}
+                        onClick={() => onCreateClick()}
 
                     >
-                        Изменить
+                        Создать
                     </Button>
                 </div>
             </div>
         </OkhotnikovPopUp>
     );
 };
-export default EditCategoryPopup;
+export default CreateManufacturepopup;

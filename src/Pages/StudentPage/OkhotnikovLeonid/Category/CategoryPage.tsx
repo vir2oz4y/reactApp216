@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Category} from "./models";
 import CategoryElement from "./CategoryElement";
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
@@ -8,22 +8,30 @@ import EditIcon from '@mui/icons-material/Edit';
 import OkhotnikovPopUp from "../../../../Components/Okhotnikov/OkhotnikovPopUp/OkhotnikovPopUp";
 import Createcategorypopup from "./Popups/Createcategorypopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
+import {okhotnikovAxios} from "../OkhotnikovLeonid";
 
 const CategoryPage = () => {
-    const [categoryList, setcategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: 'Category 1'
-        },
-        {
-            id: 1,
-            name: 'Category 2'
-        }
-    ])
+    const [categoryList, setcategoryList] = useState<Category[]>([])
     const onDeleteClick = (id:number) =>{
+        okhotnikovAxios.delete(`https://canstudy.ru/orderapi/category/${id}`)
+            .then(()=>{
+                setcategoryList(prev=>[
+                    ...prev.filter(el=>el.id!==id)
+                ])
+            })
         setcategoryList(prev => [...prev.filter(el => el.id !== id)])
 
     }
+    const getCategories = () =>{
+        okhotnikovAxios.get<{ items: Category[]
+        }>('https://canstudy.ru/orderapi/category/list')
+            .then(res=>{setcategoryList(res.data.items);
+            })
+    }
+    useEffect(()=>{
+        getCategories()
+    },[])
+
     const onEditClick = (id:number) =>{
         const curCategory = categoryList.find(el=>el.id===id)
         setEditCategory(curCategory)

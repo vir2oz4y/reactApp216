@@ -18,17 +18,17 @@ const AsideMenu = () => {
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton onClick={()=>navigate('Client')}>
+                        <ListItemButton onClick={()=>navigate('Manufacturer')}>
                             <ListItemText primary="Manufacturer" />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton onClick={()=>navigate('Client')}>
+                        <ListItemButton onClick={()=>navigate('Product')}>
                             <ListItemText primary="Product" />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton onClick={()=>navigate('Client')}>
+                        <ListItemButton onClick={()=>navigate('Purchase')}>
                             <ListItemText primary="Purchase" />
                         </ListItemButton>
                     </ListItem>

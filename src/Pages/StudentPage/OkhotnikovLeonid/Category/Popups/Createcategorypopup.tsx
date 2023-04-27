@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import OkhotnikovPopUp, {IPopup} from "../../../../../Components/Okhotnikov/OkhotnikovPopUp/OkhotnikovPopUp";
 import {Button, TextField} from "@mui/material";
 import {Category} from "../models";
+import {okhotnikovAxios} from "../../OkhotnikovLeonid";
 
 type Props = IPopup & {
     onCreate: (category: Category) => void;
@@ -10,11 +11,16 @@ type Props = IPopup & {
 const Createcategorypopup = ({open, onClose, onCreate}: Props) => {
     const [categoryName, setCategoryName] = useState('')
     const onCreateClick = () => {
-        onCreate({
-            id: Math.random(),
+        okhotnikovAxios.post<{
+            item:Category }>
+        ('https://canstudy.ru/orderapi/category',{
             name: categoryName
-        });
-        onClose();
+        })
+            .then(res=>{
+                onCreate(res.data.item)
+                onClose();
+            })
+
     }
     return (
         <OkhotnikovPopUp

@@ -1,6 +1,6 @@
 import { Button, IconButton } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import CategoryElement from './CategoryElement/CategoryElement';
 import { Category } from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,23 +8,32 @@ import EditIcon from '@mui/icons-material/Edit';
 import ProkhorovPopup from '../../../../Components/Prokhorov/ProkhorovPopup/ProkhorovPopup';
 import CreateCategoryPopup from './Popups/CreateCategoryPopup';
 import EditCategoryPopup from './Popups/EditCategoryPopup';
+import {prokhorovAxios} from "../ProkhorovMihailPage";
 const CategoryPage = () => {
 
-    const [categoryList, setcategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: 'Category 1'
-        },
-        {
-            id: 1,
-            name: 'Category 2'
-        }
-    ])
+    const [categoryList, setcategoryList] = useState<Category[]>([])
+
+    const getCategories = () =>{
+        prokhorovAxios.get<{ items: Category [] }>( 'https://canstudy.ru/orderapi/category/list')
+            .then(res=>{
+            setcategoryList(res.data.items);
+        })
+    }
+    useEffect(()=>{
+        getCategories()
+    },[])
 
     const onDeleteClick = (id: number) => {
-        setcategoryList(prev => [
-            ...prev.filter(el => el.id !== id)
-        ])
+
+        prokhorovAxios.delete(`https://canstudy.ru/orderapi/category/${id}`)
+            .then(()=>{
+                setcategoryList(prev=>[
+                    ...prev.filter(el => el.id !== id)
+                ])
+            })
+        // setcategoryList(prev => [
+        //     ...prev.filter(el => el.id !== id)
+        // ])
     }
 
     const onEditClick = (id: number) => {
@@ -46,7 +55,9 @@ const CategoryPage = () => {
             headerName: '',
             renderCell: (e: any) => {
                 return <div>
-                    <IconButton aria-label="edit">
+                    <IconButton
+                        onClick={()=> onEditClick(e.row.id)}
+                        aria-label="edit">
                         <EditIcon />
                     </IconButton>
                     <IconButton

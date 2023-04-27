@@ -3,6 +3,7 @@ import ProkhorovPopup, { IPopup } from '../../../../../Components/Prokhorov/Prok
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Category } from "../models";
+import {prokhorovAxios} from "../../ProkhorovMihailPage";
 
 
 type Props = IPopup & {
@@ -13,21 +14,34 @@ const EditCategoryPopup = ({ onClose, open, onEdit, category }: Props) => {
 
     const [editCategory, setEditCategory] = useState(category)
 
+
+
     const onEditClick = () => {
-        onEdit(editCategory);
-        onClose();
+
+        prokhorovAxios.patch<{
+            item: Category
+        }>('https://canstudy.ru/orderapi/category',{
+            item: editCategory
+        })
+
+            .then(res=>{
+                onEdit(res.data.item);
+                onClose();
+            })
+
+
     }
     return (
         <ProkhorovPopup
             open={open}
             onClose={() => onClose()}
-            title={'Редактирование категории'}
+            title={'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ'}
         >
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'qem' }}>
                 <TextField
                     variant={'standard'}
                     fullWidth={true}
-                    label={'Название категории'}
+                    label={'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ'}
                     value={editCategory.name}
                     onChange={e => setEditCategory(prev => ({ ...prev, name: e.target.value }))
                     }
@@ -38,7 +52,7 @@ const EditCategoryPopup = ({ onClose, open, onEdit, category }: Props) => {
                         variant={'contained'}
                         onClick={() => onEditClick()}
                     >
-                        Изменить
+                        пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     </Button>
                 </div>
             </div>

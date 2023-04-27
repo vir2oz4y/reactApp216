@@ -1,11 +1,11 @@
 import {Button, TextField} from '@mui/material';
 import React, {useState} from 'react';
 import ProkhorovPopup, {IPopup} from "../../../../../Components/Prokhorov/ProkhorovPopup/ProkhorovPopup";
-import {Category} from '../models';
+import {Manufacturer} from '../models';
 import {prokhorovAxios} from "../../ProkhorovMihailPage";
 
 type Props = IPopup & {
-    onCreate: (category: Category) => void;
+    onCreate: (category: Manufacturer) => void;
 }
 const CreateCategoryPopup = ({ onClose, open, onCreate }: Props) => {
 
@@ -13,7 +13,7 @@ const CreateCategoryPopup = ({ onClose, open, onCreate }: Props) => {
 
     const onCreateClick = () => {
         prokhorovAxios.post<{
-            item: Category
+            item: Manufacturer
         }>('https://canstudy.ru/orderapi/category',{
             name: categoryName
         })

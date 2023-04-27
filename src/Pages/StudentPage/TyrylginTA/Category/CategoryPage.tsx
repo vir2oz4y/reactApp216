@@ -1,6 +1,6 @@
 import { Button, IconButton } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CategoryElement from './CategoryElement/CategoryElement';
 import { Category } from './models';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,23 +8,33 @@ import EditIcon from '@mui/icons-material/Edit';
 import TyrylginPopUp from '../../../../Components/Tyrylgin/TyrylginPopUp/TyrylginPopUp';
 import CreateCategoryPopup from "./Popups/CreateCategoryPopup";
 import EditCategoryPopup from "./Popups/EditCategoryPopup";
+import {TyrylginAxios} from "../TyrylginTAPage";
 const CategoryPage = () => {
 
-    const [categoryList, setcategoryList] = useState<Category[]>([
-        {
-            id: 0,
-            name: 'Category 1'
-        },
-        {
-            id: 1,
-            name: 'Category 2'
-        }
-    ])
+    const [categoryList, setcategoryList] = useState<Category[]>([])
+
+    const getCategories = () => {
+        TyrylginAxios.get<{ items: Category[] }>(
+            'https://canstudy.ru/orderapi/category/list'
+        )
+            .then(res=>{
+                setcategoryList(res.data.items);
+            })
+    }
+
+    useEffect(()=>{
+        getCategories()
+    },[])
 
     const onDeleteClick = (id: number) => {
-        setcategoryList(prev => [
-            ...prev.filter(el => el.id !== id)
-        ])
+
+        TyrylginAxios
+            .delete(`https://canstudy.ru/orderapi/category/${id}`)
+            .then(()=>{
+                setcategoryList(prev => [
+                    ...prev.filter(el => el.id !== id)
+                ])
+            })
     }
 
     const onEditClick = (id:number) =>{

@@ -2,32 +2,26 @@ import React, {useState} from 'react';
 import TyrylginPopUp, {IPopup} from "../../../../../Components/Tyrylgin/TyrylginPopUp/TyrylginPopUp";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import {Category} from "../models";
+import {Manufacturer} from "../models";
 import {TyrylginAxios} from "../../TyrylginTAPage";
 
 type Props = IPopup & {
-    onEdit:(category:Category)=>void;
-    category:Category;
+    onCreate:(Manufacturer:Manufacturer)=>void;
 }
-const EditCategoryPopup = ({onClose,open, onEdit, category}:Props) => {
+const CreateManufacturerPopup = ({onClose,open, onCreate}:Props) => {
 
-    const [editCategory,setEditCategory] = useState(category)
+    const [ManufacturerName,setManufacturerName] = useState('')
 
-    //const onEditClick=()=>{
-        //onEdit(editCategory);
-        //onClose();
-   //}
-
-    const onEditClick = () => {
+    const onCreateClick=()=>{
 
         TyrylginAxios
-            .patch<{ item: Category }>(
-                'https://canstudy.ru/orderapi/category',
+            .post<{ item: Manufacturer }>(
+                'https://canstudy.ru/orderapi/Manufacturer',
                 {
-            item: editCategory
-        })
+                    name: ManufacturerName
+                })
             .then(res=>{
-                onEdit(res.data.item)
+                onCreate(res.data.item)
                 onClose();
             })
     }
@@ -35,24 +29,23 @@ const EditCategoryPopup = ({onClose,open, onEdit, category}:Props) => {
         <TyrylginPopUp
             open={open}
             onClose={()=>onClose()}
-            title = {'Редактирование категории'}
+            title = {'Создание категории'}
         >
             <div style={{display:'flex', flexDirection:'column',gap:'qem'}}>
                 <TextField
                     variant={'standard'}
                     fullWidth={true}
                     label={'Название категории'}
-                    value={editCategory.name}
-                    onChange={e=>setEditCategory(prev=>({...prev, name:e.target.value}))
-                }
+                    value={ManufacturerName}
+                    onChange={e=>setManufacturerName(e.target.value)}
                 />
                 <div style={{display:'flex',justifyContent:'center'}}>
                     <Button
                         color={'primary'}
                         variant={'contained'}
-                        onClick={()=>onEditClick()}
+                        onClick={()=>onCreateClick()}
                     >
-                        Изменить
+                        Создать
                     </Button>
                 </div>
             </div>
@@ -60,4 +53,4 @@ const EditCategoryPopup = ({onClose,open, onEdit, category}:Props) => {
     );
 };
 
-export default EditCategoryPopup;
+export default CreateManufacturerPopup;

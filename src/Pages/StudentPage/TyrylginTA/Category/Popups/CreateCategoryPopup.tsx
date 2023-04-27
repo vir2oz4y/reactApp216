@@ -3,6 +3,7 @@ import TyrylginPopUp, {IPopup} from "../../../../../Components/Tyrylgin/Tyrylgin
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {Category} from "../models";
+import {TyrylginAxios} from "../../TyrylginTAPage";
 
 type Props = IPopup & {
     onCreate:(category:Category)=>void;
@@ -12,11 +13,17 @@ const CreateCategoryPopup = ({onClose,open, onCreate}:Props) => {
     const [categoryName,setCategoryName] = useState('')
 
     const onCreateClick=()=>{
-        onCreate({
-            id:Math.random(),
-            name:categoryName
-        })
-        onClose();
+
+        TyrylginAxios
+            .post<{ item: Category }>(
+            'https://canstudy.ru/orderapi/category',
+            {
+                name: categoryName
+            })
+            .then(res=>{
+                onCreate(res.data.item)
+                onClose();
+            })
     }
     return (
         <TyrylginPopUp

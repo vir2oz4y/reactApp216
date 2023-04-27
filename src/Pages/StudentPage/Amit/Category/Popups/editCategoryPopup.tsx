@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import React, {useState} from 'react';
 import MitrofanovaPopUp, {IPopup} from "../../../../../Components/Mitrofanova/MitrofanovaPopUp/MitrofanovaPopUp";
 import { Category } from '../models';
+import {mitrofanovaAxios} from "../../AmitPage";
 
 
 type Props=IPopup &{
@@ -14,7 +15,12 @@ const EditCategoryPopUp = ({open, onClose, onEdit, category}:Props) => {
     const [editCategory, seteditCategory]=useState(category)
 
     const onEditClick=()=>{
-        onEdit(editCategory)
+        mitrofanovaAxios.patch("https://canstudy.ru/orderapi/category", {
+            item: editCategory
+        })
+            .then(res=>{onEdit(res.data.item)})
+        onClose();
+       /* onEdit(editCategory)*/
     }
 
     return (

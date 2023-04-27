@@ -1,5 +1,5 @@
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useState} from 'react';
 import CategoryElement from './CategoryElement';
 import {Category} from './models';
@@ -9,21 +9,34 @@ import EditIcon from '@mui/icons-material/Edit';
 import MitrofanovaPopUp from '../../../../Components/Mitrofanova/MitrofanovaPopUp/MitrofanovaPopUp';
 import CreateCategoryPopUp from "./Popups/CreateCategoryPopUp";
 import EditCategoryPopUp from "./Popups/editCategoryPopup";
+import {mitrofanovaAxios} from "../AmitPage";
 
 const CategoryPage = () => {
     const [categoryList, setcategoryList] = useState<Category[]>([
-        {
+        /*{
             id: 0,
             name: 'Category 1'
         },
         {
             id: 1,
             name: 'Category 2'
-        }
+        }*/
     ]);
 
+    const getCategories=()=>{
+        mitrofanovaAxios.get<{
+            items: Category[] }>("https://canstudy.ru/orderapi/category/list")
+            .then(res=>setcategoryList(res.data.items))
+    }
+    useEffect(()=>{
+        getCategories();
+    }, [])
     const onDeleteClick = (id: number) => {
-        setcategoryList(prev => [...prev.filter(el => el.id !== id)])
+
+        mitrofanovaAxios.delete(`https://canstudy.ru/orderapi/category/${id}`)
+            .then(()=>{
+                setcategoryList(prev => [...prev.filter(el => el.id !== id)])
+            })
     }
     const onEditClick = (id: number) => {
         const curCategory = categoryList.find(el => el.id === id);

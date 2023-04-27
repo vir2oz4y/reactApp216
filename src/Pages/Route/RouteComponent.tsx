@@ -26,6 +26,7 @@ import { default as MtClient } from "../StudentPage/Amit/Client/Client";
 import { default as MtCategory } from "../StudentPage/Amit/Category/Category";
 
 
+
 import OkhotnikovLeonidPage from "../StudentPage/OkhotnikovLeonid/OkhotnikovLeonid";
 import {default as OhTest1Page} from "../StudentPage/OkhotnikovLeonid/Category/CategoryPage";
 import {default as OhTest2Page} from "../StudentPage/OkhotnikovLeonid/Client/ClientPage";
@@ -76,6 +77,7 @@ const RouteComponent = () => {
                        {/* <Route path={'Test1'} element={<MtTest1Page/>} />
                         <Route path={'Test2'} element={<MtTest2Page/>} />*/}
                         <Route path={'Category'} element={<MtCategory />} />
+                        <Route path={'Manufacturer'} element={<MtManufacturer />} />
                         <Route path={'User'} element={<MtUser />} />
                         <Route path={'Client'} element={<MtClient />} />
                         <Route path={'Product'} element={<MtProduct/>} />

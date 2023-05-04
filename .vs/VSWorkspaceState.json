@@ -4,13 +4,12 @@
     "\\src",
     "\\src\\Pages",
     "\\src\\Pages\\StudentPage",
-    "\\src\\Pages\\StudentPage\\TyrylginTA",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Category",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Category\\CategoryElement",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Test1",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Test2",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\User"
+    "\\src\\Pages\\StudentPage\\KryuchkovNick",
+    "\\src\\Pages\\StudentPage\\KryuchkovNick\\Category\\Popups",
+    "\\src\\Pages\\StudentPage\\KryuchkovNick\\Client",
+    "\\src\\Pages\\StudentPage\\KryuchkovNick\\Client\\Popups",
+    "\\src\\Pages\\StudentPage\\KryuchkovNick\\Product"
   ],
-  "SelectedNode": "\\src\\Pages\\StudentPage\\TyrylginTA\\Category\\CategoryElement\\CategoryElement.tsx",
+  "SelectedNode": "\\src\\Pages\\StudentPage\\KryuchkovNick\\Product\\ProductPage.tsx",
   "PreviewInSolutionExplorer": false
 }

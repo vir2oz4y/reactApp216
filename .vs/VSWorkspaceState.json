@@ -5,12 +5,12 @@
     "\\src\\Pages",
     "\\src\\Pages\\StudentPage",
     "\\src\\Pages\\StudentPage\\TyrylginTA",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Category",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Category\\CategoryElement",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Test1",
-    "\\src\\Pages\\StudentPage\\TyrylginTA\\Test2",
+    "\\src\\Pages\\StudentPage\\TyrylginTA\\Manufacturer",
+    "\\src\\Pages\\StudentPage\\TyrylginTA\\Manufacturer\\Popups",
+    "\\src\\Pages\\StudentPage\\TyrylginTA\\Product",
+    "\\src\\Pages\\StudentPage\\TyrylginTA\\Product\\Popups",
     "\\src\\Pages\\StudentPage\\TyrylginTA\\User"
   ],
-  "SelectedNode": "\\src\\Pages\\StudentPage\\TyrylginTA\\Category\\CategoryElement\\CategoryElement.tsx",
+  "SelectedNode": "\\src\\Pages\\StudentPage\\TyrylginTA\\Manufacturer\\Popups\\CreateManufacturePopup.tsx",
   "PreviewInSolutionExplorer": false
 }

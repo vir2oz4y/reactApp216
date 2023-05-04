@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\Components",
-    "\\src\\Components\\Prokhorov",
-    "\\src\\Components\\Prokhorov\\ProkhorovPopup",
     "\\src\\Pages",
+    "\\src\\Pages\\Route",
     "\\src\\Pages\\StudentPage",
     "\\src\\Pages\\StudentPage\\ProkhorovMihail",
-    "\\src\\Pages\\StudentPage\\ProkhorovMihail\\Category",
-    "\\src\\Pages\\StudentPage\\ProkhorovMihail\\Category\\Popups"
+    "\\src\\Pages\\StudentPage\\ProkhorovMihail\\Client",
+    "\\src\\Pages\\StudentPage\\ProkhorovMihail\\Client\\Popups",
+    "\\src\\Pages\\StudentPage\\ProkhorovMihail\\Product",
+    "\\src\\Pages\\StudentPage\\ProkhorovMihail\\Product\\Popups"
   ],
-  "SelectedNode": "\\src\\Pages\\StudentPage\\ProkhorovMihail\\ProkhorovMihailPage.tsx",
+  "SelectedNode": "\\src\\Pages\\StudentPage\\ProkhorovMihail\\Product\\Popups\\CreateProductPopup.tsx",
   "PreviewInSolutionExplorer": false
 }

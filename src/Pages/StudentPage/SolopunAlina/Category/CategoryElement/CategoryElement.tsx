@@ -1,27 +1,28 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import { Category } from './models';
+import { Category } from './../models';
 
-type props = {
+type Props = {
     category: Category,
     onDeleteClick: () => void;
 }
 
-const CategoryElement = ({ category, onDeleteClick}:props) => {
+const CategoryElement = ({ category, onDeleteClick }:Props) => {
     return (
         <div>
             <div>
                 {category.name}
             </div>
+
             <div>
-                <Button onClick={() => onDeleteClick()}
+                <Button
+                    onClick={() => onDeleteClick()}
                     color={'primary'}
-                    variant={"contained"}
+                    variant={'contained'}
                 >
-                    Delete
+                    �������
                 </Button>
             </div>
-
         </div>
     );
 };

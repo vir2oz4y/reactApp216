@@ -1,9 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-import CategoryElement from './CategoryElement';
-import { Category} from './models';
+import React, { useState } from 'react';
+import CategoryElement from './CategoryElement/CategoryElement';
+import { Category } from './models';
 
 const CategoryPage = () => {
+
     const [categoryList, setcategoryList] = useState<Category[]>([
         {
             id: 0,
@@ -12,21 +12,25 @@ const CategoryPage = () => {
         {
             id: 1,
             name: 'Category 2'
-        }
-    ]);
+        },
+    ])
 
-    const onDeleteClick = (id: number) => {
-        setcategoryList(prev=>[...prev.filter(el=>el.id!==id)])
+    const onDeleteClick = (id:number) => {
+        setcategoryList(prev => [
+            ...prev.filter(el => el.id !== id)
+        ])
     }
+
     return (
         <div>
             <h1>Category</h1>
+
             <div>
                 {categoryList.map((el, i) => <CategoryElement
                     key={i}
                     category={el}
                     onDeleteClick={() => onDeleteClick(el.id)}
-                    />)}
+                />)}
             </div>
         </div>
     );

@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Manufacturer = () => {
+
+const ManufacturerPage = () => {
     return (
         <div>
-            1
+            Manufacturer
         </div>
     );
 };
 
-export default Manufacturer;
+export default ManufacturerPage;

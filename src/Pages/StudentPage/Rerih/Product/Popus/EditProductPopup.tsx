@@ -8,18 +8,25 @@ import { Manufacturer } from '../../Manufacturer/models';
 
 
 type Props = IPopup & {
-    onCreate: (newProduct: Product) => void;
+    onEdit: (newProduct: Product) => void;
+    Product: Product
 }
 
-const CreateProductPopup = ({open, onClose, onCreate}: Props) => {
+const EditProductPopUp = ({open, onClose, Product:ProductEdit, onEdit}: Props) => {
 
-    const createProduct = () => {
-        RerihAxios.post<{ item: Product }>('https://canstudy.ru/orderapi/Product',
+    const [Product, setProduct] = useState(ProductEdit)
+
+    const onEditClick = () => {
+
+        RerihAxios.patch<{ item:Product }>('https://canstudy.ru/orderapi/Product',
             {
-                ...Product
+                item:{
+                    ...Product
+                }
             })
             .then(response => {
-                onCreate(response.data.item)
+                onEdit(response.data.item)
+                onClose();
             })
     }
 
@@ -28,7 +35,7 @@ const CreateProductPopup = ({open, onClose, onCreate}: Props) => {
     const [manufactureList, setManufactureList] = useState<Manufacturer[]>([])
 
     const getCategories = () => {
-        RerihAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+        RerihAxios<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
             .then(response => {
                 setCategoryList(response.data.items);
             })
@@ -46,28 +53,10 @@ const CreateProductPopup = ({open, onClose, onCreate}: Props) => {
         getManufacturies();
     }, [])
 
-    const [Product, setProduct] = useState<Product>({
-        categoryId: 0,
-        categoryName: "",
-        cost: 0,
-        description: "",
-        id: 0,
-        manufacturerId: 0,
-        manufacturerName: "",
-        name: ""
-    })
-
-    const onCreateClick = () => {
-        createProduct();
-
-        onClose();
-    }
-
-    console.log(Product)
 
     return (
         <RerihPopup
-            title={'Создание товара'}
+            title={'Изменение клиента'}
             open={open}
             onClose={() => onClose()}
         >
@@ -75,11 +64,9 @@ const CreateProductPopup = ({open, onClose, onCreate}: Props) => {
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '1em',
-                    paddingTop: '1em'
+                    gap: '1em'
                 }}
             >
-
                 <TextField
                     label="Название"
                     variant="standard"
@@ -135,14 +122,13 @@ const CreateProductPopup = ({open, onClose, onCreate}: Props) => {
                     </Select>
                 </FormControl>
 
-
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <Button
                         color={'primary'}
                         variant={'contained'}
-                        onClick={() => onCreateClick()}
+                        onClick={() => onEditClick()}
                     >
-                        Создать
+                        Изменить
                     </Button>
                 </div>
 
@@ -151,4 +137,4 @@ const CreateProductPopup = ({open, onClose, onCreate}: Props) => {
     );
 };
 
-export default CreateProductPopup;
+export default EditProductPopUp;

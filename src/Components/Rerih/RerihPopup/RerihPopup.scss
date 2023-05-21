@@ -1,0 +1,25 @@
+.popup{
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content{
+    background-color: #FF69B4;
+    padding: 1em;
+    border-radius: 1em;
+    min-width: 400px;
+
+    &__title{
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 5em;
+      margin-bottom: 5em;
+      border-bottom: solid 100px #7B68EE;
+    }
+  }
+}

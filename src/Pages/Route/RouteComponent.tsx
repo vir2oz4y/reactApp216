@@ -23,7 +23,7 @@ import { default as MtUser } from "../StudentPage/Amit/User/User";
 import { default as MtProduct } from "../StudentPage/Amit/Product/Product";
 import { default as MtManufacturer } from "../StudentPage/Amit/Manufacturer/Manufacturer";
 import { default as MtClient } from "../StudentPage/Amit/Client/Client";
-import { default as MtCategory } from "../StudentPage/Amit/Category/Category";
+import CategoryPage, { default as MtCategory } from "../StudentPage/Amit/Category/Category";
 
 
 import OkhotnikovLeonidPage from "../StudentPage/OkhotnikovLeonid/OkhotnikovLeonid";
@@ -50,6 +50,11 @@ import { default as KrClientPage } from "../StudentPage/KryuchkovNick/Client/Cli
 import { default as KrManufacturerPage } from "../StudentPage/KryuchkovNick/Manufacturer/ManufacturerPage";
 import { default as KrProductPage } from "../StudentPage/KryuchkovNick/Product/ProductPage";
 import { default as KrOrderPage } from "../StudentPage/KryuchkovNick/Order/OrderPage";
+import RerihPage from "../StudentPage/Rerih/RerihPage";
+import RerihCategoryPopup from "../StudentPage/Rerih/Category/Popus/CreateCategoryPopup";
+import ClientPage from "../StudentPage/Rerih/Client/ClientPage";
+import ManufacturerPage from "../StudentPage/Rerih/Manufacturer/ManufacturerPage";
+import ProductPage from "../StudentPage/Rerih/Product/ProductPage";
 
 
 
@@ -71,6 +76,14 @@ const RouteComponent = () => {
                         <Route path={'user'} element={<TyrylginUserPage />} />
                         <Route path={'purchase'} element={<TyrylginPurchasePage />} />
                     </Route>
+
+                    <Route path={'Rerih'} element={<RerihPage/>} >
+                        <Route path={'Category'} element={<CategoryPage/>}/>
+                        <Route path={'Client'} element={<ClientPage />} />
+                        <Route path={'Manufacturer'} element={<ManufacturerPage />} />
+                        <Route path={'Product'} element={<ProductPage />} />
+                    </Route>
+
 
                     <Route path={'Amit'} element={<Amit/>} >
                        {/* <Route path={'Test1'} element={<MtTest1Page/>} />

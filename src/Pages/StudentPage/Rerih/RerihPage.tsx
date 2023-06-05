@@ -26,7 +26,7 @@ const RerihPage = () => {
     },[])
     return (
         <div>
-            <Header studentFio={'Свириденко Дмитрий'}/>
+            <Header studentFio={'Рерих Эдуард'}/>
 
             <ContentBlock>
                 <div style={{ display: 'flex', gap: 'lem' }}>

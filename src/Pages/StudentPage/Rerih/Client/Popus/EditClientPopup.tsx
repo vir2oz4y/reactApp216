@@ -3,7 +3,7 @@ import  React, { useState } from 'react'
 import RerihPopup, {IPopup} from "../../../../../Components/Rerih/RerihPopup/RerihPopup";
 import { Client } from '../models';
 import {RerihAxios} from "../../RerihPage";
-import {Category} from "../../Category/models";
+
 
 
 

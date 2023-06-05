@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Button } from '@mui/material';
-import { Category } from './models';
+import { Category } from './Models';
 import RerihCreatePopup from "./Popus/CreateCategoryPopup";
 import RerihEditCategory from "./Popus/EditCategoryPopup";
 import {RerihAxios} from "../RerihPage";

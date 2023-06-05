@@ -1,10 +1,10 @@
 import {Button,TextField } from '@mui/material';
 import  React, { useState } from 'react'
-import TelelinskiyPopUp, {IPopup} from "../../../../../Components/Rerih/RerihPopup/RerihPopup";
-import { Client } from '../Models';
+import RerihPopup , {IPopup} from "../../../../../Components/Rerih/RerihPopup/RerihPopup";
+import { Client } from '../models';
 import {RerihAxios} from "../../RerihPage";
-import {Category} from "../../Category/models";
-import RerihPopup from "../../../../../Components/Rerih/RerihPopup/RerihPopup";
+
+
 
 
 type Props = IPopup & {

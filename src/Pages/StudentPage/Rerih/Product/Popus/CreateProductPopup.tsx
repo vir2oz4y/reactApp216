@@ -1,9 +1,8 @@
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import  React, {useEffect, useState } from 'react'
 import RerihPopup, {IPopup} from "../../../../../Components/Rerih/RerihPopup/RerihPopup";
-import { Product } from '../models';
 import {RerihAxios} from "../../RerihPage";
-import {Category} from "../../Category/models";
+import {Product} from "../models";
 import { Manufacturer } from '../../Manufacturer/models';
 
 
@@ -23,12 +22,12 @@ const CreateProductPopup = ({open, onClose, onCreate}: Props) => {
             })
     }
 
-    const [categoryList, setCategoryList] = useState<Category[]>([])
+    const [categoryList, setCategoryList] = useState<Product[]>([])
 
     const [manufactureList, setManufactureList] = useState<Manufacturer[]>([])
 
     const getCategories = () => {
-        RerihAxios.get<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+        RerihAxios.get<{ items: Product[] }>('https://canstudy.ru/orderapi/category/list')
             .then(response => {
                 setCategoryList(response.data.items);
             })

@@ -4,10 +4,10 @@ import { Button, IconButton } from '@mui/material';
 import {useEffect, useState } from 'react';
 import { Product } from './models';
 import CreateProductPopup from './Popus/CreateProductPopup';
-import EditProductPopup from './Popus/EditProductPopup';
+import  EditProductPopup  from './Popus/EditProductPopup';
 import {RerihAxios} from "../RerihPage";
 
-const Product = () => {
+const ProductPage = () => {
 const [ProductList, setProductList] = useState<Product[]>([])
 
 const getProducts = () => {
@@ -171,4 +171,4 @@ return (
     </div>
 );
 };
-export default Product;
+export default ProductPage;

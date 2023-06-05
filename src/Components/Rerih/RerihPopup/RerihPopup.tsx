@@ -1,6 +1,6 @@
 import {Button, Modal } from '@mui/material';
 import React from 'react';
-import "./SviridenkoDDD.scss"
+import "./RerihPopup.scss"
 
 export type IPopup ={
     open:boolean,

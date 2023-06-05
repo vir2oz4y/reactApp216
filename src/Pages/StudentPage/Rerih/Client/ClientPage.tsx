@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Box, Button } from '@mui/material';
 import {useEffect, useState} from 'react';
-import { Client } from './Models';
+import { Client } from './models';
 import { CreateClientPopUp } from './Popus/CreateClientPopup';
 import { EditClientPopup } from './Popus/EditClientPopup';
 import {RerihAxios} from "../RerihPage";

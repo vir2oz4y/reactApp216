@@ -1,7 +1,7 @@
 import {Button, TextField } from '@mui/material';
 import  React, { useState } from 'react'
 import RerihPopup , {IPopup} from "../../../../../Components/Rerih/RerihPopup/RerihPopup";
-import { Manufacturer } from '../models';
+import { Manufacturer } from '../Models';
 import {RerihAxios} from "../../RerihPage";
 
 

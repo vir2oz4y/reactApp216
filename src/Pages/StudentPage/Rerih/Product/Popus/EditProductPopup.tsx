@@ -3,7 +3,6 @@ import  React, {useEffect, useState } from 'react'
 import RerihPopup, {IPopup} from "../../../../../Components/Rerih/RerihPopup/RerihPopup";
 import { Product } from '../models';
 import {RerihAxios} from "../../RerihPage";
-import {Category} from "../../Category/models";
 import { Manufacturer } from '../../Manufacturer/models';
 
 
@@ -30,12 +29,12 @@ const EditProductPopUp = ({open, onClose, Product:ProductEdit, onEdit}: Props) =
             })
     }
 
-    const [categoryList, setCategoryList] = useState<Category[]>([])
+    const [categoryList, setCategoryList] = useState<Product[]>([])
 
     const [manufactureList, setManufactureList] = useState<Manufacturer[]>([])
 
     const getCategories = () => {
-        RerihAxios<{ items: Category[] }>('https://canstudy.ru/orderapi/category/list')
+        RerihAxios<{ items: Product[] }>('https://canstudy.ru/orderapi/category/list')
             .then(response => {
                 setCategoryList(response.data.items);
             })
